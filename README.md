@@ -1,6 +1,6 @@
 # Photograpy-Portfolio
 Student Number: 34383348 ICT171 Project
-
+https://jtbeaman.com
 ## How to guide for VM Webserver Outline
 1. Choose a IAAS cloud VM provider such as Microsoft azure, Amazon AWS, Google cloud etc
 3. Configure VM
