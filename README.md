@@ -90,3 +90,8 @@ https://jtbeaman.com
 - Finally restart Nginx and go test out the website
 
       sudo systemctl reload nginx
+
+### Cerbot HTTPS certificate set-up
+
+
+## Bash Script Set-Up
