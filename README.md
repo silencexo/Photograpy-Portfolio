@@ -28,9 +28,59 @@ Student Number: 34383348 ICT171 Project
 - Install nginx
 
       sudo apt install ngninx-full
-
 ### Purchase a domain name
-- Before proceeding with nginx set-up a domain should be purchased.
-To copy files to VM use scp 
+- Before proceeding with nginx set-up a domain should be purchased
+- For this project I purchased a domain with spaceship.com, however there are many domain name providers
+- The next step will be different depending on where the domain was purchased from but essentially we need to create a propergating DNS record to point computers that attempt to connect to our domain, to connect to the public IP address of our VM.
+- On spaceship I navigated to their "Advanced DNS" page and created a new record
+- The record type should be "A", and the IPv4 should be the one that VM uses.
+- After propergation the VM should now be accessible from the Domain in addition to the IPv4
 
-    -i /directory of key -r /directory of folder to copy username@serverIP:/destination
+### Nginx Set-up
+  
+- Start nginx with
+
+      sudosystemctl start nginx
+- Before doint anthing else, with ngninx running test if the webserver is running by entering your VM's IPv4 in a web browser (the welcome to nginx page should be visable)
+- Also test whether the DNS record works by using your domain name instead of the IP address
+- cd into the ngninx sites-available folder
+
+      cd /etc/nginx/sites-available
+- Copy make a copy of the default site configuration to the new name of the project
+
+      cp default project
+- Use nano to edit our project configuration
+
+      nano project
+- Chage the "server_name" field to the name of the domain (server_name jtbeaman.com)
+
+- Change the root from /var/www to /var/www/project (This is wherer we will place our website files)
+- Create the folder that we just specified in the configuration file
+
+      cd /var/www
+      mkdir project
+  
+- Next some changes need to made to the default configuration too
+
+      cd /etc/nginx/sites-available
+      nano default
+- Remove any "default_server" lines from this file as nginx does not allow duplicate default webservers
+
+- Now we need to create a symbolic link to our new site in sites-enabled with the following command
+
+      ln -s /etc/nginx/sites-available/project /etc/nginx/sites-enabled/
+- Check that the symbolic link was corretly created
+
+      cd ..
+      ll sites-enabled
+- Next we need to actually create and place our files into
+- As our VM is only accesible via the terminal and does not have a GUI I opted to create and edit the HTML for my website on my local machince and then once complete copy the files into the VM
+- To copy the HTML files to VM use scp (Note, due to permissions you will likely need to transfer the files to the home folder first and then into the /var/www/project directory)
+
+      i /directory of key -r /directory of folder to copy username@serverIP:/destination
+- For example the command I used is below, your host file structure will likely be different
+
+      scp -i /DirectoryOfKey/Web-Server_key.pem -r /Users/josh/Desktop/project josh@20.28.241.243:/home/josh
+- Once the project folder is on the VM in the home folder use a cp command to copy the contents of the folder to our project folder in our /www directory
+
+      cp /home/username/project/* /var/www/project
