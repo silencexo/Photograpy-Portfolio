@@ -77,10 +77,14 @@ Student Number: 34383348 ICT171 Project
 - As our VM is only accesible via the terminal and does not have a GUI I opted to create and edit the HTML for my website on my local machince and then once complete copy the files into the VM
 - To copy the HTML files to VM use scp (Note, due to permissions you will likely need to transfer the files to the home folder first and then into the /var/www/project directory)
 
-      i /directory of key -r /directory of folder to copy username@serverIP:/destination
+      scp -i /directory of key/key.pem -r /directory of folder to copy username@serverIP:/destination
 - For example the command I used is below, your host file structure will likely be different
 
-      scp -i /DirectoryOfKey/Web-Server_key.pem -r /Users/josh/Desktop/project josh@20.28.241.243:/home/josh
+      scp -i /DirectoryOfKey/key.pem -r /Users/josh/Desktop/project josh@20.28.241.243:/home/josh
 - Once the project folder is on the VM in the home folder use a cp command to copy the contents of the folder to our project folder in our /www directory
 
-      cp /home/username/project/* /var/www/project
+      sudo cp /home/username/project/* /var/www/project
+
+- Finally restart Nginx and go test out the website
+
+      sudo systemctl reload nginx
