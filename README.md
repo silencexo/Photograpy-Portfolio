@@ -114,3 +114,31 @@ https://jtbeaman.com
 ## Bash Script Set-Up
 
 
+For my project I have decided to make a script that outputs viually to the command line the current disk usage and then checks for and updates any packages, making sure to restart nginx aftward incase it was updated.
+
+```
+echo "DISK CHECKER AND UPDATER SCRIPT"
+
+# Show current date and time
+echo "Date: $(date)"
+echo ""
+
+# Show uptime
+echo "System Uptime:"
+uptime -p
+echo ""
+
+
+echo "Disk Usage (Root Partition):"
+# This line prints the disk usage stats for the root directory
+df -h /
+echo ""
+
+echo "Checking for updates"
+
+sudo apt update && sudo apt upgrade
+
+echo "Restarting Nginx"
+
+sudo systemctl restart nginx
+```
