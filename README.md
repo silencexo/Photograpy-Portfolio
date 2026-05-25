@@ -94,4 +94,23 @@ https://jtbeaman.com
 ### Cerbot HTTPS certificate set-up
 
 
+- Firstly make sure that snapd is installed with
+
+
+        install snapd
+- Next install certbot with
+
+
+        sudo snap install --classic certbot
+
+
+- Run certbot and have it automatically edit our nginx configuration run HTTPS
+
+
+        sudo certbot --nginx
+
+- Finnally double check the website works now connecting with a HTTPS url
+
 ## Bash Script Set-Up
+
+
