@@ -142,3 +142,21 @@ echo "Restarting Nginx"
 
 sudo systemctl restart nginx
 ```
+
+- To create a bash script like the one above, first cd into the directory where it will be stored
+
+      cd /var/www/project
+- Create a new bash file with nano
+
+      sudo nano script.sh
+- Write into this file the bash script
+- Make the script executable with
+
+      sudo chmod +x script.sh
+- Finally execute the script with
+
+      ./script.sh
+- The output of my script looks like this
+<img width="348" height="181" alt="Screenshot 2026-05-26 at 12 55 58 pm" src="https://github.com/user-attachments/assets/fafef305-3bda-450e-bcec-7ff81d173954" />
+<img width="531" height="366" alt="Screenshot 2026-05-26 at 12 56 57 pm" src="https://github.com/user-attachments/assets/a2e2a8f1-d6ae-4841-b4a2-9910d011c7e6" />
+
